@@ -7,7 +7,13 @@ constexpr unsigned long long fibonacci(int i) {
         case 1:
             return 1;
         default:
-            return fibonacci(i - 1) + fibonacci(i - 2);
+            unsigned long long a = 0, b = 1, result = 0;
+            for (int j = 2; j <= i; ++j) {
+                result = a + b;
+                a = b;
+                b = result;
+            }
+            return result;
     }
 }
 
@@ -18,7 +24,7 @@ int main(int argc, char **argv) {
 
     // TODO: 观察错误信息，修改一处，使代码编译运行
     // PS: 编译运行，但是不一定能算出结果……
-    constexpr auto ANS_N = 23;
+    constexpr auto ANS_N = 90;
     constexpr auto ANS = fibonacci(ANS_N);
     std::cout << "fibonacci(" << ANS_N << ") = " << ANS << std::endl;
 
