@@ -1,4 +1,5 @@
 #include "../exercise.h"
+#include <cstring>
 
 // READ: 枚举类型 <https://zh.cppreference.com/w/cpp/language/enum>
 
@@ -37,6 +38,8 @@ ColorEnum convert_by_pun(Color c) {
 
     TypePun pun;
     // TODO: 补全类型双关转换
+    pun.c = c;
+    std::memcpy(&pun.e, &pun.c, sizeof(Color));
 
     return pun.e;
 }
